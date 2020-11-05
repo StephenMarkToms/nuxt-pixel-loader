@@ -9,6 +9,8 @@ export default function (moduleOptions) {
     ...this.options.pixelLoader,
   }
 
+  const pixels = ['test']
+
   // expose the namespace / set a default
   if (!options.namespace) options.namespace = 'pixelLoader'
   if (!options.folder) options.folder = 'pixels'
@@ -25,7 +27,8 @@ export default function (moduleOptions) {
   }
 
   // sync all of the files and folders to revelant places in the nuxt build dir (.nuxt/)
-  const foldersToSync = ['plugins/helpers']
+  const pixelFolder = '../' + options.folder
+  const foldersToSync = ['plugins/helpers', pixelFolder]
   for (const pathString of foldersToSync) {
     const path = resolve(__dirname, pathString)
     for (const file of readdirSync(path)) {
@@ -37,17 +40,18 @@ export default function (moduleOptions) {
     }
   }
 
-  // sync all of the files and folders to revelant places in the nuxt build dir (.nuxt/)
-  const pixelFolder = '../' + options.folder
+  // push all the pixel files into an array
   const pixelsToSync = [pixelFolder]
   for (const pathString of pixelsToSync) {
     const path = resolve(__dirname, pathString)
     for (const file of readdirSync(path)) {
-      console.log(resolve(path, file))
       const pixel = readFileSync(join(path, file), 'utf8')
-      console.log(pixel)
+      console.log('pixel ' + pixel)
+      pixels.push(pixel)
     }
   }
+
+  console.log(pixels)
 
   // configure webpack to recognize .pixel files
   this.extendBuild((config, { isClient, isServer }) => {
@@ -57,4 +61,5 @@ export default function (moduleOptions) {
     })
   })
 }
+
 module.exports.meta = require('./package.json')
