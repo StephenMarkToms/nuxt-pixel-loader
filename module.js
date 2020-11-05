@@ -1,6 +1,6 @@
 // module.js
 import { resolve, join } from 'path'
-import { readdirSync } from 'fs'
+import { readdirSync, readFileSync } from 'fs'
 
 export default function (moduleOptions) {
   // get all options for the module
@@ -25,8 +25,7 @@ export default function (moduleOptions) {
   }
 
   // sync all of the files and folders to revelant places in the nuxt build dir (.nuxt/)
-  const pixelFolder = '../' + options.folder
-  const foldersToSync = ['plugins/helpers', pixelFolder]
+  const foldersToSync = ['plugins/helpers']
   for (const pathString of foldersToSync) {
     const path = resolve(__dirname, pathString)
     for (const file of readdirSync(path)) {
@@ -35,6 +34,18 @@ export default function (moduleOptions) {
         fileName: join(namespace, pathString, file),
         options,
       })
+    }
+  }
+
+  // sync all of the files and folders to revelant places in the nuxt build dir (.nuxt/)
+  const pixelFolder = '../' + options.folder
+  const pixelsToSync = [pixelFolder]
+  for (const pathString of pixelsToSync) {
+    const path = resolve(__dirname, pathString)
+    for (const file of readdirSync(path)) {
+      console.log(resolve(path, file))
+      const pixel = readFileSync(join(path, file), 'utf8')
+      console.log(pixel)
     }
   }
 

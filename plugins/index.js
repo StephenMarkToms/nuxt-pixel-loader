@@ -10,17 +10,8 @@ export default ({ store }, inject) => {
   const { state } = store
   // inject an object of functions into the app
   inject(namespace, {
-    value() {
-      return helpers.value({ state, namespace })
+    onLoad() {
+      return helpers.onLoad({ state, namespace })
     },
-    adjust(adjustment) {
-      return helpers.adjust({ state, store, namespace, adjustment })
-    },
-    log() {
-      return helpers.log({ state, namespace })
-    },
-    message(string) {
-      return helpers.message({ namespace, string })
-    }
   })
 }
