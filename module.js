@@ -1,6 +1,6 @@
 // module.js
 import { resolve, join } from 'path'
-import { readdirSync, statSync } from 'fs'
+import { readdirSync } from 'fs'
 
 export default function (moduleOptions) {
   // get all options for the module
@@ -15,12 +15,7 @@ export default function (moduleOptions) {
   const { namespace } = options
 
   // add all of the initial plugins
-  const pluginsToSync = [
-    'store/index.js',
-    'plugins/index.js',
-    'debug.js',
-    'middleware/index.js',
-  ]
+  const pluginsToSync = ['plugins/index.js', 'debug.js']
   for (const pathString of pluginsToSync) {
     this.addPlugin({
       src: resolve(__dirname, pathString),
@@ -31,7 +26,7 @@ export default function (moduleOptions) {
 
   // sync all of the files and folders to revelant places in the nuxt build dir (.nuxt/)
   const pixelFolder = '../' + options.folder
-  const foldersToSync = ['plugins/helpers', 'store/modules', pixelFolder]
+  const foldersToSync = ['plugins/helpers', pixelFolder]
   for (const pathString of foldersToSync) {
     const path = resolve(__dirname, pathString)
     for (const file of readdirSync(path)) {
