@@ -23,6 +23,7 @@ export default function (moduleOptions) {
       src: resolve(__dirname, pathString),
       fileName: join(namespace, pathString),
       options,
+      pixels,
     })
   }
 
