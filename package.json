@@ -1,8 +1,24 @@
 {
-  "name": "nuxt-module",
+  "name": "@sutura/nuxt-pixel-loader",
   "version": "0.0.1",
   "description": "Nuxt module tutorial",
-  "private": true,
   "main": "module.js",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StephenMarkToms/nuxt-pixel-loader.git"
+  },
+  "keywords": [
+    "nuxt",
+    "pixel",
+    "tracking"
+  ],
+  "author": "Stephen Mark Toms",
+  "bugs": {
+    "url": "https://github.com/StephenMarkToms/nuxt-pixel-loader/issues"
+  },
+  "homepage": "https://github.com/StephenMarkToms/nuxt-pixel-loader#readme"
 }

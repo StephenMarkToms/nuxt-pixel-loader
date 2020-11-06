@@ -11,7 +11,11 @@ export default function (moduleOptions) {
 
   // expose the namespace / set a default
   if (!options.namespace) options.namespace = 'pixelLoader'
-  if (!options.folder) options.folder = 'pixels'
+  if (!options.folder) {
+    options.folder = '../../pixels'
+  } else {
+    options.folder = '../../' + options.folder
+  }
   const { namespace } = options
 
   // sync all of the files and folders to revelant places in the nuxt build dir (.nuxt/)
