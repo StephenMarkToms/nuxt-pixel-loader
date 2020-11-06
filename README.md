@@ -60,17 +60,36 @@ The following options can be configured in the module's configuration entry in y
 
 1. Inject the module in your `nuxt.config.js` file. See [Getting Started](#getting-started).
 2. Create a folder in the root of you nuxt project `/pixels`
+3. Use the following example (Google Tag Manager) below to create an injection pixel
 
 ```js
-{
-  ...
-  mounted() {
-    const elements = this.$stripe.elements();
-    const card = elements.create('card', {});
-    // Add an instance of the card Element into the `card-element` <div>
-    card.mount('#card-element');
-  },
-  ...
+/* eslint-disable no-undef */
+import { onLoad } from './helpers/onLoad'
+
+export default ({ app }) => {
+  onLoad(() => {
+    const gId = app.$config.gtmID // Garbs GTM ID from .env file
+    const script = document.createElement('script')
+    script.defer = true
+
+    script.innerHTML =
+      `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','` +
+      gId +
+      `');`
+
+    document.head.appendChild(script)
+
+    window.dataLayer = window.dataLayer || []
+    window.gtag = function () {
+      dataLayer.push(arguments)
+    }
+    gtag('js', new Date())
+    gtag('config', gId)
+  })
 }
 ```
 
