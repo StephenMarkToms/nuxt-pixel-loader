@@ -1,9 +1,10 @@
 // debug.js
-const options = JSON.parse(`<%= JSON.stringify(options) %>`)
-const pixels = `<%= pixels %>`
+const pixels = `<%= options.pixels %>`
 
-const { debug, namespace } = options
-if (debug) {
-  console.log(`${namespace} options: `, options)
-  console.log(`${namespace} pixels: `, pixels)
-}
+console.log(pixels)
+
+// const { debug, namespace } = options
+// if (debug) {
+//   console.log(`${namespace} options: `, options)
+//   console.log(`${namespace} pixels: `, options.pixels)
+// }
