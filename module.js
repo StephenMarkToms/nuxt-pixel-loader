@@ -42,6 +42,7 @@ export default function (moduleOptions) {
     this.addPlugin({
       src: resolve(__dirname, pathString),
       fileName: join(namespace, pathString),
+      ssr: false,
       options,
     })
   }
