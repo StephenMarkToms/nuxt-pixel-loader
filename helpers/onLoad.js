@@ -1,6 +1,6 @@
 // callback - the function to run after onLoad
 // delay - wait # milliseconds after onLoad
-export const onLoad = (callback, delay = 1) => {
+export const onLoad = (callback, delay) => {
   // missed the load event, run now
   if (document.readyState === 'complete') {
     setTimeout(() => callback(), delay)
