@@ -13,7 +13,6 @@
 * [Getting Started](#getting-started)
 * [Options](#options)
 * [Usage](#usage)
-* [License](#license)
 
 ## Requirements
 
@@ -92,8 +91,3 @@ export default ({ app }) => {
   })
 }
 ```
-
-
-## License
-
-[MIT License](./LICENSE)
