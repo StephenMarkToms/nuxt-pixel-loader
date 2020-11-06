@@ -7,7 +7,7 @@ export default function (moduleOptions) {
   const options = {
     ...moduleOptions,
     ...this.options.pixelLoader,
-    pixels: [],
+    pixels: '',
   }
 
   // configure webpack to recognize .pixel files
@@ -31,7 +31,7 @@ export default function (moduleOptions) {
     const path = resolve(__dirname, pathString)
     for (const file of readdirSync(path)) {
       const pixel = readFileSync(join(path, file), 'utf8')
-      options.pixels.push(pixel)
+      options.pixels = options.pixels + pixel
       console.log('pushed: ' + file)
     }
   }
