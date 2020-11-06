@@ -56,33 +56,10 @@ The following options can be configured in the module's configuration entry in y
 - **Required**
 - **Default:** `pixels`
 
-Your publishable key.
-
-https://stripe.com/docs/js/initializing#init_stripe_js-publishableKey
-
-#### API version - `apiVersion`
-
-- **Optional**
-- **Default:** `null`
-
-Override your account's API version.
-
-https://stripe.com/docs/js/initializing#init_stripe_js-options-apiVersion
-
-#### Locale - `locale`
-
-- **Optional**
-- **Default**: `'en'`
-
-A locale used to globally configure localization in Stripe. Setting the locale here will localize
-error strings for all Stripe.js methods. It will also configure the locale for Elements and Checkout. Default is auto (Stripe detects the locale of the browser).
-
-https://stripe.com/docs/js/initializing#init_stripe_js-options-locale
-
 ## Usage
 
 1. Inject the module in your `nuxt.config.js` file. See [Getting Started](#getting-started).
-2. `this.$stripe` is now available in your components:
+2. Create a folder in the root of you nuxt project `/pixels`
 
 ```js
 {
@@ -96,8 +73,6 @@ https://stripe.com/docs/js/initializing#init_stripe_js-options-locale
   ...
 }
 ```
-[For more details, please refer to the official Stripe documentation.](https://stripe.com/docs/stripe-js/reference)
-
 
 
 ## License
