@@ -4,7 +4,7 @@
 [![npm](https://img.shields.io/npm/dt/@sutura/nuxt-pixel-loader.svg?style=flat-square)](https://npmjs.com/package/@sutura/nuxt-pixel-loader)
 [![js-standard-style](https://img.shields.io/badge/code_style-standard-brightgreen.svg?style=flat-square)](http://standardjs.com)
 
-> A NuxtJS module to import intuitively import 3rd party integrations.
+> A NuxtJS module to intuitively import 3rd party integrations.
 
 ## Table of Contents ##
 
